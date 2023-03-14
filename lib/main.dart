@@ -35,20 +35,59 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter HTTP Example',
+      title: 'Exemplo de conexão API HTTP',
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter HTTP Example'),
+          title: Text('Exemplo de conexão API HTTP'),
         ),
         body: ListView.builder(
           itemCount: _data.length,
           itemBuilder: (context, index) {
             final item = _data[index];
-            return ListTile(
-              title: Text(item['title']),
-              subtitle: Text(item['body']),
+            return Card(
+              child: ListTile(
+                title: Text(item['title'],
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                subtitle: Text(item['body'], style: TextStyle(fontSize: 16)),
+                trailing: Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailScreen(item: item)));
+                },
+              ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget {
+  final dynamic item;
+
+  DetailScreen({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail Screen'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(item['title'],
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            SizedBox(height: 16),
+            Text(item['body'], style: TextStyle(fontSize: 18)),
+          ],
         ),
       ),
     );
