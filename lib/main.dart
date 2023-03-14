@@ -76,7 +76,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail Screen'),
+        title: Text('Tela de Detalhes'),
       ),
       body: Container(
         padding: EdgeInsets.all(16),

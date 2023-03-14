@@ -1,6 +1,6 @@
-# exercicio
+# Repositório de Exercícios
 
-A new Flutter project.
+Repositório para a matéria de C214-L2
 
 ## Getting Started
 
